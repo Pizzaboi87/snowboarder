@@ -10,8 +10,11 @@ public class CrashDetector : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        crashEffect.Play();
-        Invoke("ReloadScene", delay);
+        if (other.gameObject.tag == "Ground")
+        {
+            crashEffect.Play();
+            Invoke("ReloadScene", delay);
+        }
     }
 
     void ReloadScene()
